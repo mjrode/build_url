@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-
 require 'build_url'
 require_relative "../lib/build_url/compose_url"
 require_relative "../lib/build_url/mailer"
@@ -17,5 +16,5 @@ else
   build_details = gets.chomp
   url = ComposeUrl.build_url(build_details)
   Mailer.mail(url)
-  puts "The following url has been emailed to you: #{url}"
+  puts "The following url has been emailed to #{email}: #{url}"
 end
