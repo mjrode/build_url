@@ -1,41 +1,27 @@
 # BuildUrl
+A library that will parse out jenkins output and email you the build url. 
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/build_url`. To experiment with that code, run `bin/console` for an interactive prompt.
+## Install and Setup
 
-TODO: Delete this and the text above, and describe your gem
+### Install the gem
+`git clone git@github.com:mjrode/build_url.git`
+`cd build_url`
+`bundle install`
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'build_url'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install build_url
+### Add your email
+Add the email address that you want to use to config.yml
 
 ## Usage
+Run `ruby lib/build_url.rb`
+It will prompt you to enter in a line form the Jenkins output and then will email you the appropriate url for that build. 
 
-TODO: Write usage instructions here
+## Tips
+I find it is best to add the following alias to your bash_profile
+`vim ~/.bash_profile`
 
-## Development
+You will need to edit the path to reflect where you installed it.
+```# Jenkins url mailer script
+ alias url="ruby /Users/mike.rode/Malauzai/projects/build_url/lib/build_url.rb"```
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/build_url.
-
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+Now anytime you want to use the script you can type url from any directory and it will run. 
 
