@@ -25,7 +25,8 @@ I find it is best to add the following alias to your bash_profile
 You will need to edit the path to reflect where you installed it.
 
 ```# Jenkins url mailer script
- alias url="ruby /Users/mike.rode/Malauzai/projects/build_url/lib/build_url.rb" ```
+ alias url="ruby /Users/mike.rode/Malauzai/projects/build_url/lib/build_url.rb" 
+```
 
 Now anytime you want to use the script you can type url from any directory and it will run. 
 
