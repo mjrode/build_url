@@ -3,9 +3,9 @@ require 'yaml'
 require 'mail'
 class Mailer
   def self.mail(url:, subject:)
-    email = YAML::load(File.open('config.yml'))["email"]
+    config = YAML::load(File.open('config.yml'))
     Pony.mail({
-      :to => email,
+      :to => config['email'],
       :subject => subject,
       :via => :smtp,
       :html_body            => url,
@@ -13,12 +13,12 @@ class Mailer
         :address              => 'smtp.gmail.com',
         :port                 => '587',
         :enable_starttls_auto => true,
-        :user_name            => 'michaelrode44',
-        :password             => 'lhxryunelxdwjqir',
-        :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
-        :domain               => "localhost.localdomain" # the HELO domain provided by the client to the server
+        :user_name            => config['gmail_username'],
+        :password             => config['password'],
+        :authentication       => :plain,
+        :domain               => "localhost.localdomain"
       }
     })
-    puts "\n Email sent to #{email} with #{subject}: \n\n" 
+    puts "\n Email sent to #{config['email']} with #{subject}: \n\n"
   end
 end

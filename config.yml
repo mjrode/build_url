@@ -1,4 +1,11 @@
+# Set this to your email
 email:
-  "michaelrode44@gmail.com"
+  'michaelrode44@gmail.com'
+
+# Dont Change
 base_url:
-  "https://s3.amazonaws.com/"
+  'https://s3.amazonaws.com/'
+gmail_username:
+  'michaelrode44'
+password:
+  'lhxryunelxdwjqir'
