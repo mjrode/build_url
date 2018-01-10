@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'build_url'
-require_relative "../lib/build_url/compose_url"
+require 'mail'
+require_relative "../lib/build_url/compose"
 require_relative "../lib/build_url/mailer"
 require 'yaml'
 
@@ -14,7 +15,9 @@ else
   puts "Please enter the second to last line of the build"
   puts "Example: `13:23:47 Publish artifacts to S3 Bucket bucket=mlzAndroid, file=084-5.3.1665-preproduction.apk`"
   build_details = gets.chomp
-  url = ComposeUrl.build_url(build_details)
-  Mailer.mail(url)
-  puts "The following url has been emailed to #{email}: #{url}"
+  url = Compose.build_url(build_details)
+  subject = Compose.build_subject(build_details)
+  params = {url: url, subject: subject}
+  Mailer.mail(params)
+  puts url
 end

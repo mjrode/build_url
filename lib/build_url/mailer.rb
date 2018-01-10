@@ -1,12 +1,14 @@
 require 'pony'
 require 'yaml'
+require 'mail'
 class Mailer
-  def self.mail(generated_url)
+  def self.mail(url:, subject:)
     email = YAML::load(File.open('config.yml'))["email"]
     Pony.mail({
       :to => email,
+      :subject => subject,
       :via => :smtp,
-      :html_body            => generated_url,
+      :html_body            => url,
       :via_options => {
         :address              => 'smtp.gmail.com',
         :port                 => '587',
@@ -17,5 +19,6 @@ class Mailer
         :domain               => "localhost.localdomain" # the HELO domain provided by the client to the server
       }
     })
+    puts "\nEmail sent to #{email} with #{subject}: \n\n" 
   end
 end
