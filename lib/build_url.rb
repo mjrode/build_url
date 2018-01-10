@@ -1,15 +1,15 @@
 #!/usr/bin/env ruby
 require 'mail'
+require 'yaml'
 require_relative "../lib/build_url/compose"
 require_relative "../lib/build_url/mailer"
-require 'yaml'
 
 def run
-email = YAML::load(File.open('config.yml'))["email"]
-return unless valid_email?(email)
-prompt_user
-params = build_params(gets.chomp)
-Mailer.mail(params)
+  email = YAML::load(File.open('config.yml'))["email"]
+  return unless valid_email?(email)
+  prompt_user
+  params = build_params(gets.chomp)
+  Mailer.mail(params)
 end
 
 def valid_email?(email)
