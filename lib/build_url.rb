@@ -26,7 +26,7 @@ def valid_email?(email)
 end
 
 def prompt_user
-  puts "Please enter the second to last line of the build"
+  puts "Please enter the second to last line of the build\n\n"
   puts "Example: `13:23:47 Publish artifacts to S3 Bucket bucket=mlzAndroid, file=084-5.3.1665-preproduction.apk`"
 end
 
