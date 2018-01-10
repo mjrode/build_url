@@ -19,6 +19,6 @@ class Mailer
         :domain               => "localhost.localdomain" # the HELO domain provided by the client to the server
       }
     })
-    puts "\ngitEmail sent to #{email} with #{subject}: \n\n" 
+    puts "\n Email sent to #{email} with #{subject}: \n\n" 
   end
 end
