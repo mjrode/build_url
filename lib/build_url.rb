@@ -6,12 +6,13 @@ require 'yaml'
 
 def run
 email = YAML::load(File.open('config.yml'))["email"]
+check_email?(email)
 prompt_user
 params = build_params(gets.chomp)
 Mailer.mail(params)
 end
 
-def check_email?
+def check_email?(email)
   return puts "Please enter your email in `build_url/config.yml`" if email == "change-me"
   return puts "You need to enter a gmail email address." unless email.include?("@gmail")
 end
