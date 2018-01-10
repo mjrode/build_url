@@ -1,5 +1,5 @@
 # BuildUrl
-A library that will parse out jenkins output and email you the build url. 
+A script that will take Jenkins output and email you a build url. 
 
 ## Install and Setup
 
