@@ -2,8 +2,7 @@ require 'pony'
 require 'yaml'
 require 'mail'
 class Mailer
-  def self.mail(url:, subject:)
-    config = YAML::load(File.open('config.yml'))
+  def self.mail(url:, subject:, config:)
     Pony.mail({
       :to => config['email'],
       :subject => subject,

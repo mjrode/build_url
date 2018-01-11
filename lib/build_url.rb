@@ -5,11 +5,17 @@ require_relative "../lib/build_url/compose"
 require_relative "../lib/build_url/mailer"
 
 def run
-  email = YAML::load(File.open('config.yml'))["email"]
-  return unless valid_email?(email)
+
+  config = get_config
+  return unless valid_email?(config['email'])
   prompt_user
-  params = build_params(gets.chomp)
+  params = build_params(gets.chomp, config)
   Mailer.mail(params)
+end
+
+def get_config
+  base = File.expand_path("..", __dir__)
+  YAML::load_file(File.join(base, 'config.yml'))
 end
 
 def valid_email?(email)
@@ -30,10 +36,10 @@ def prompt_user
   puts "Example: `13:23:47 Publish artifacts to S3 Bucket bucket=mlzAndroid, file=084-5.3.1665-preproduction.apk`"
 end
 
-def build_params(build_details)
-  url = Compose.build_url(build_details)
+def build_params(build_details, config)
+  url = Compose.build_url(build_details, config)
   subject = Compose.build_subject(build_details)
-  params = {url: url, subject: subject}
+  params = {url: url, subject: subject, config: config}
 end
 
 run
