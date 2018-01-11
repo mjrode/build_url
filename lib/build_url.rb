@@ -5,7 +5,6 @@ require_relative "../lib/build_url/compose"
 require_relative "../lib/build_url/mailer"
 
 def run
-
   config = get_config
   return unless valid_email?(config['email'])
   prompt_user
