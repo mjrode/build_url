@@ -35,7 +35,7 @@ end
 def get_email
   puts 'Do you want to send this to someone else (Yes/No, Y/N, y/n)'
   response = gets.chomp
-  if response.downcase == 'y' || 'yes' 
+  if response.downcase == 'y' ||  response.downcase == 'yes' 
     puts 'Please enter the email address'
     @email = gets.chomp
   end
